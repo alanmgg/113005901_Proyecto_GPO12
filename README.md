@@ -1,15 +1,8 @@
----
-Titulo: Proyecto de Computación Gráfica 2022-2
-Autor: Mora González Alan Francisco
-Versión: 1.0
-Licencia: GNU v3.0
-Fecha: 03-04-2022
----
-
-
 [![Repository Status](https://img.shields.io/badge/Repository%20Status-Maintained-dark%20green.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica)
 [![Author](https://img.shields.io/badge/Author-Alan%20Francisco%20Mora-blue.svg)](https://github.com/alanmgg)
 [![Latest Release](https://img.shields.io/badge/Latest%20Release-03%20April%202022-yellow.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica/commits/main)
+[![License](https://img.shields.io/badge/License-GNU%20v3.0-blue.svg)](https://github.com/alanmgg)
+[![Version](https://img.shields.io/badge/Version-1.0-red.svg)](https://github.com/alanmgg)
 
 # PROYECTO FINAL 2022-2
 Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
