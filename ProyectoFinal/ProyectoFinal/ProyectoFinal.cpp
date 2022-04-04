@@ -54,7 +54,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Practica 7", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Proyecto final", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -98,8 +98,6 @@ int main( )
 
 
     // Load models
-    /*Model Pizza((char*)"Models/Pizza/PizzaSteve.obj");
-    Model brader((char*)"Models/Pizza/brader.obj");*/
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
     GLfloat vertices[] =
@@ -143,10 +141,9 @@ int main( )
     glEnableVertexAttribArray(2);
 
     // Load textures
-    Model box((char*)"Models/Box/box.obj");
-    //Model pokeAbajo((char*)"Models/Pokeball/pokeabajo.obj");
-    //Model pokeArriba((char*)"Models/Pokeball/pokearriba.obj");
-    Model bed((char*)"Models/Bed/bed.obj");
+    Model sillon((char*)"Models/Sillon/sillon.obj");
+
+
     GLuint texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -157,20 +154,6 @@ int main( )
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-  
-    image = stbi_load("images/linux.png", &textureWidth, &textureHeight, &nrChannels, 0);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    if (image)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(image);
 
 
     // Game loop
@@ -198,25 +181,17 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //glDrawElements(GL_TRIANGLES, 6, GL_FLAT, 0);
-        //Pizza.Draw(shader);
 
         model = glm:: mat4(1);
         model = glm::rotate(model, glm::radians(-rot), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //brader.Draw(shader);
 
-        /*pokeArriba.Draw(shader);
-        model = glm::mat4(1);
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        pokeAbajo.Draw(shader);
-        glBindVertexArray(0);*/
-
-        bed.Draw(shader);
+        sillon.Draw(shader);
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
         lampshader.Use();
+
         //glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
