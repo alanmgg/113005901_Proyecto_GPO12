@@ -141,7 +141,7 @@ int main( )
     glEnableVertexAttribArray(2);
 
     // Load textures
-    Model sillon((char*)"Models/Sillon/sillon.obj");
+    Model mesa((char*)"Models/Table/table.obj");
 
 
     GLuint texture;
@@ -187,7 +187,7 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
 
-        sillon.Draw(shader);
+        mesa.Draw(shader);
 
         
         glActiveTexture(GL_TEXTURE0);
