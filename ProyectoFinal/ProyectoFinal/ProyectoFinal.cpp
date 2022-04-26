@@ -143,6 +143,9 @@ int main( )
     Model chair((char*)"Models/Silla/silla.obj");
     Model table((char*)"Models/Table/table.obj");
     Model sofa((char*)"Models/Sillon/sillon.obj");
+    Model mostrador((char*)"Models/Mostrador/mostrador.obj");
+    Model bote((char*)"Models/Bote/bote.obj");
+    Model floor((char*)"Models/Floor/floor.obj");
 
 
     GLuint texture;
@@ -301,6 +304,36 @@ int main( )
         model = glm::scale(model, glm::vec3(0.196f, 0.196f, 0.196f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         sofa.Draw(shader);
+
+
+        // Draw the bote
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(6.887f, 0.0f, -6.497f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.618f, 0.618f, 0.618f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        bote.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(6.887f, 0.0f, -8.696f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.618f, 0.618f, 0.618f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        bote.Draw(shader);
+
+
+        // Draw the counter
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-2.529f, 0.0f, -8.992f));
+        model = glm::scale(model, glm::vec3(0.519f, 0.519f, 0.519f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        mostrador.Draw(shader);
+
+
+        // Draw the floor
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        floor.Draw(shader);
 
         
         glActiveTexture(GL_TEXTURE0);
