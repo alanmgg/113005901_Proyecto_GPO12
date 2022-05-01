@@ -24,12 +24,12 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 
 #### Elementos a implementar:
 - [ ] Manual técnico y de usuario.
-- [ ] Proyecto en repositorio con cambios hechos durante el semestre.
+- [x] Proyecto en repositorio con cambios hechos durante el semestre.
 - [ ] Realismo del espacio virtual contra la foto de referencia.
 - [ ] Archivo Ejecutable.
 - [ ] Modelado (mínimo 7 elementos).
 - [ ] Animaciones (mínimo 3 sencillas y 2 complejas).
-- [ ] Manejo de cámara.
+- [x] Manejo de cámara.
 
 #### Modelos a diseñar:
 ![McDonald´s](./Images/McDonalds.jpg)
