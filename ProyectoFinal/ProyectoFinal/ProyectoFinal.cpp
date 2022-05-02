@@ -146,6 +146,7 @@ int main( )
     Model mostrador((char*)"Models/Mostrador/mostrador.obj");
     Model bote((char*)"Models/Bote/bote.obj");
     Model interior((char*)"Models/Interior/interior.obj");
+    Model maquina((char*)"Models/Maquina/maquina.obj");
 
 
     GLuint texture;
@@ -328,6 +329,30 @@ int main( )
         model = glm::scale(model, glm::vec3(0.716f, 0.716f, 0.716f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         mostrador.Draw(shader);
+
+
+        // Draw the machines
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-9.660f, 0.159f, 6.245f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        maquina.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-11.705f, 0.159f, 6.245f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        maquina.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-9.660f, 0.159f, 0.452f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        maquina.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-11.705f, 0.159f, 0.452f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        maquina.Draw(shader);
 
 
         // Draw the interior
