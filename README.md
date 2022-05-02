@@ -28,7 +28,8 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 - [ ] Realismo del espacio virtual contra la foto de referencia.
 - [ ] Archivo Ejecutable.
 - [ ] Modelado (mínimo 7 elementos).
-- [ ] Animaciones (mínimo 3 sencillas y 2 complejas).
+- [ ] Animaciones sencillas (mínimo 3).
+- [ ] Animaciones complejas (mínimo 2).
 - [x] Manejo de cámara.
 
 #### Modelos a diseñar:
