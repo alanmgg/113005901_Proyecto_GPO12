@@ -33,6 +33,98 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Piso_gris.png
 Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl lamp3:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Negro.png
+Ni 1.00
+newmtl lamp3:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
+newmtl lamp4:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Negro.png
+Ni 1.00
+newmtl lamp4:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
+newmtl lamp5:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Negro.png
+Ni 1.00
+newmtl lamp5:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
+newmtl lamp6:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Negro.png
+Ni 1.00
+newmtl lamp6:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
+newmtl lamp7:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Negro.png
+Ni 1.00
+newmtl lamp7:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
 newmtl maquina:initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50

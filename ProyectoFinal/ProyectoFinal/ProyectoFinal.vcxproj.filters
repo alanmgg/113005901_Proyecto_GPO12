@@ -29,16 +29,16 @@
     <None Include="Shaders\lamp.vs">
       <Filter>Archivos de origen\Shaders</Filter>
     </None>
-    <None Include="Shaders\lighting.frag">
-      <Filter>Archivos de origen\Shaders</Filter>
-    </None>
-    <None Include="Shaders\lighting.vs">
-      <Filter>Archivos de origen\Shaders</Filter>
-    </None>
     <None Include="Shaders\modelLoading.frag">
       <Filter>Archivos de origen\Shaders</Filter>
     </None>
     <None Include="Shaders\modelLoading.vs">
+      <Filter>Archivos de origen\Shaders</Filter>
+    </None>
+    <None Include="Shaders\lighting.frag">
+      <Filter>Archivos de origen\Shaders</Filter>
+    </None>
+    <None Include="Shaders\lighting.vs">
       <Filter>Archivos de origen\Shaders</Filter>
     </None>
   </ItemGroup>

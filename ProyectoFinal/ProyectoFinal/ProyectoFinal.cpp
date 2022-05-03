@@ -1,5 +1,7 @@
 // Std. Includes
 #include <string>
+#include <iostream>
+#include <cmath>
 
 // GLEW
 #include <GL/glew.h>
@@ -31,7 +33,7 @@ void DoMovement( );
 
 
 // Camera
-Camera camera( glm::vec3( 0.0f, 5.0f, 20.0f ) );
+Camera camera( glm::vec3( -2.5f, 10.0f, 25.0f ) );
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -40,17 +42,28 @@ GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 float rot = 0.0f;
 
+// Light attributes
+glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
+bool active;
+
+// Positions of the point lights
+glm::vec3 pointLightPositions[] = {
+    glm::vec3(3.822f, 4.373f, 10.006f)
+};
+
+glm::vec3 Light1 = glm::vec3(0);
+
 
 int main( )
 {
     // Init GLFW
     glfwInit( );
     // Set all the required options for GLFW
-    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
+    /*glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
     glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
     glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
     glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
-    glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
+    glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );*/
     
     // Create a GLFWwindow object that we can use for GLFW's functions
     GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Proyecto final", nullptr, nullptr );
@@ -92,8 +105,7 @@ int main( )
     // Setup and compile our shaders
     Shader shader( "Shaders/modelLoading.vs", "Shaders/modelLoading.frag" );
     Shader lampshader( "Shaders/lamp.vs", "Shaders/lamp.frag" );
-    
-
+    Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
 
 
     // Load models
@@ -146,7 +158,9 @@ int main( )
     Model mostrador((char*)"Models/Mostrador/mostrador.obj");
     Model bote((char*)"Models/Bote/bote.obj");
     Model interior((char*)"Models/Interior/interior.obj");
+    Model pilar((char*)"Models/Interior/pilar.obj");
     Model maquina((char*)"Models/Maquina/maquina.obj");
+    Model lamp((char*)"Models/Lamp/lamp.obj");
 
 
     GLuint texture;
@@ -159,6 +173,22 @@ int main( )
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+
+    // Then, we set the light's VAO (VBO stays the same. After all, the vertices are the same for the light object (also a 3D cube))
+    GLuint lightVAO;
+    glGenVertexArrays(1, &lightVAO);
+    glBindVertexArray(lightVAO);
+    // We only need to bind to the VBO (to link it with glVertexAttribPointer), no need to fill it; the VBO's data already contains all we need.
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // Set the vertex attributes (only position data for the lamp))
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0); // Note that we skip over the other data in our buffer object (we don't need the normals/textures, only positions).
+    glEnableVertexAttribArray(0);
+    glBindVertexArray(0);
+
+    // Set texture units
+    lightingShader.Use();
+    glUniform1i(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0);
+    glUniform1i(glGetUniformLocation(lightingShader.Program, "material.specular"), 1);
 
 
     // Game loop
@@ -176,6 +206,27 @@ int main( )
         // Clear the colorbuffer
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        lightingShader.Use();
+
+        // Point light 1
+        glm::vec3 lightColor;
+        lightColor.x = abs(sin(glfwGetTime() * Light1.x));
+        lightColor.y = abs(sin(glfwGetTime() * Light1.y));
+        lightColor.z = sin(glfwGetTime() * Light1.z);
+
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), lightColor.x, lightColor.y, lightColor.z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), lightColor.x, lightColor.y, lightColor.z);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), 1.0f, 1.0f, 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.35f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.44f);
+
+        // Get the uniform locations
+        GLint modelLoc = glGetUniformLocation(lightingShader.Program, "model");
+        GLint viewLoc = glGetUniformLocation(lightingShader.Program, "view");
+        GLint projLoc = glGetUniformLocation(lightingShader.Program, "projection");
 
         shader.Use();
 
@@ -355,15 +406,72 @@ int main( )
         maquina.Draw(shader);
 
 
+        // Draw the lamps
+        //model = glm::mat4(1);
+        //model = glm::translate(model, glm::vec3(3.822f, 4.373f, 10.006f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+        //glEnable(GL_BLEND); //Activa la funcionalidad para trabajar el canal alfa
+        //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        //model = glm::mat4(1);
+        //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        //glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
+        //glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0, 1.0, 0.0, 0.75);
+        //lamp.Draw(lightingShader);
+        //glDisable(GL_BLEND); //Desactiva el canal alfa 
+        //glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0, 1.0, 1.0, 1.0);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.822f, 6.703f, 10.006f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        lamp.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.822f, 6.703f, 4.545f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        lamp.Draw(shader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.822f, 6.703f, -0.15f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        lamp.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-3.64f, 6.703f, 8.895f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        lamp.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-3.64f, 6.703f, 0.503f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        lamp.Draw(shader);
+
+
         // Draw the interior
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         interior.Draw(shader);
 
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        pilar.Draw(shader);
+
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
         lampshader.Use();
+
+        // Draw the light object (using light's vertex attributes)
+        glBindVertexArray(lightVAO);
+        for (GLuint i = 0; i < 4; i++)
+        {
+            model = glm::mat4(1);
+            model = glm::translate(model, pointLightPositions[i]);
+            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+            glBindVertexArray(VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         glBindVertexArray(0);
 
@@ -372,6 +480,7 @@ int main( )
     }
     
     glDeleteVertexArrays(1, &VAO);
+    glDeleteVertexArrays(1, &lightVAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
 
@@ -404,6 +513,34 @@ void DoMovement( )
         camera.ProcessKeyboard( RIGHT, deltaTime );
     }
 
+    //Pointlight lamp 1
+    if (keys[GLFW_KEY_R])
+    {
+        pointLightPositions[0].x += 0.01f;
+    }
+    if (keys[GLFW_KEY_F])
+    {
+        pointLightPositions[0].x -= 0.01f;
+    }
+
+    if (keys[GLFW_KEY_T])
+    {
+        pointLightPositions[0].y += 0.01f;
+    }
+
+    if (keys[GLFW_KEY_G])
+    {
+        pointLightPositions[0].y -= 0.01f;
+    }
+    if (keys[GLFW_KEY_Y])
+    {
+        pointLightPositions[0].z -= 0.1f;
+    }
+    if (keys[GLFW_KEY_H])
+    {
+        pointLightPositions[0].z += 0.01f;
+    }
+
 }
 
 // Is called whenever a key is pressed/released via GLFW
@@ -426,7 +563,18 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         }
     }
 
- 
+    if (keys[GLFW_KEY_SPACE])
+    {
+        active = !active;
+        if (active)
+        {
+            Light1 = glm::vec3(1.0f, 1.0f, 1.0f);
+        }
+        else
+        {
+            Light1 = glm::vec3(0); //Cuado es solo un valor en los 3 vectores pueden dejar solo una componente
+        }
+    }
 
  
 }
