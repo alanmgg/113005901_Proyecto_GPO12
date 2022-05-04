@@ -33,7 +33,7 @@ void DoMovement( );
 
 
 // Camera
-Camera camera( glm::vec3( -2.5f, 10.0f, 25.0f ) );
+Camera camera( glm::vec3( -2.5f, 5.0f, 35.0f ) );
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -172,6 +172,8 @@ int main( )
     Model pilar((char*)"Models/Interior/pilar.obj");
     Model maquina((char*)"Models/Maquina/maquina.obj");
     Model lamp((char*)"Models/Lamp/lamp.obj");
+    Model left((char*)"Models/Restaurante/left.obj");
+    
 
 
     GLuint texture;
@@ -479,6 +481,12 @@ int main( )
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         pilar.Draw(shader);
+
+
+        // Draw the restaurante
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        left.Draw(shader);
 
         
         glActiveTexture(GL_TEXTURE0);
