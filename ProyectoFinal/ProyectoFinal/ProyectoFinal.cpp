@@ -23,24 +23,20 @@
 #include "SOIL2/SOIL2.h"
 #include "stb_image.h"
 // Properties
-const GLuint WIDTH = 800, HEIGHT = 600;
+const GLuint WIDTH = 1000, HEIGHT = 700;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Function prototypes
 void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mode );
 void MouseCallback( GLFWwindow *window, double xPos, double yPos );
 void DoMovement( );
-
+void animacion();
 
 // Camera
 Camera camera( glm::vec3( -2.5f, 5.0f, 35.0f ) );
-bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
+bool keys[1024];
 bool firstMouse = true;
-
-GLfloat deltaTime = 0.0f;
-GLfloat lastFrame = 0.0f;
-float rot = 0.0f;
 
 // Variables
 float transChair = 0.0f;
@@ -51,6 +47,21 @@ float transTrash = 0.0f;
 float rotTrash = 0.0f;
 bool activeTrash;
 
+//Animación de las sillas
+float movKitXChair = 0.0;
+float movKitYChair = 0.0;
+float rotKitChair = 0.0;
+
+bool circuitoChair1 = false;
+bool circuitoChair2 = false;
+bool recorrido1 = true;
+bool recorrido2 = false;
+bool recorrido3 = false;
+
+bool recorrido4 = false;
+bool recorrido5 = false;
+bool recorrido6 = false;
+
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 bool active;
@@ -60,8 +71,11 @@ glm::vec3 pointLightPositions[] = {
     glm::vec3(3.822f, 4.373f, 10.006f)
 };
 
-glm::vec3 Light1 = glm::vec3(0);
+glm::vec3 Light1;
 
+// Deltatime
+GLfloat deltaTime = 0.0f;
+GLfloat lastFrame = 0.0f;
 
 int main( )
 {
@@ -113,7 +127,7 @@ int main( )
     
     // Setup and compile our shaders
     Shader shader( "Shaders/modelLoading.vs", "Shaders/modelLoading.frag" );
-    Shader lampshader( "Shaders/lamp.vs", "Shaders/lamp.frag" );
+    Shader lampShader( "Shaders/lamp.vs", "Shaders/lamp.frag" );
     Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
 
 
@@ -175,7 +189,6 @@ int main( )
     Model left((char*)"Models/Restaurante/left.obj");
     
 
-
     GLuint texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -186,22 +199,6 @@ int main( )
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-
-    // Then, we set the light's VAO (VBO stays the same. After all, the vertices are the same for the light object (also a 3D cube))
-    GLuint lightVAO;
-    glGenVertexArrays(1, &lightVAO);
-    glBindVertexArray(lightVAO);
-    // We only need to bind to the VBO (to link it with glVertexAttribPointer), no need to fill it; the VBO's data already contains all we need.
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    // Set the vertex attributes (only position data for the lamp))
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0); // Note that we skip over the other data in our buffer object (we don't need the normals/textures, only positions).
-    glEnableVertexAttribArray(0);
-    glBindVertexArray(0);
-
-    // Set texture units
-    lightingShader.Use();
-    glUniform1i(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0);
-    glUniform1i(glGetUniformLocation(lightingShader.Program, "material.specular"), 1);
 
 
     // Game loop
@@ -215,12 +212,20 @@ int main( )
         // Check and call events
         glfwPollEvents();
         DoMovement();
+        animacion();
 
         // Clear the colorbuffer
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        // Set texture units
         lightingShader.Use();
+
+        // Directional light
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.1f, 0.1f, 0.1f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.1f, 0.1f, 0.1f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 1.0f, 1.0f, 1.0f);
 
         // Point light 1
         glm::vec3 lightColor;
@@ -236,10 +241,33 @@ int main( )
         glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.35f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.44f);
 
+        // Set material properties
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 4.0f);
+
         // Get the uniform locations
         GLint modelLoc = glGetUniformLocation(lightingShader.Program, "model");
         GLint viewLoc = glGetUniformLocation(lightingShader.Program, "view");
         GLint projLoc = glGetUniformLocation(lightingShader.Program, "projection");
+
+        glm::mat4 model(1);
+
+        // Draw the lamps
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.822f, 4.373f, 10.006f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+
+        glEnable(GL_BLEND); //Activa la funcionalidad para trabajar el canal alfa
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        model = glm::mat4(1);
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
+        glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0, 1.0, 0.0, 0.75);
+        lamp.Draw(lightingShader);
+        glDisable(GL_BLEND); //Desactiva el canal alfa 
+        glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0, 1.0, 1.0, 1.0);
+
+        glBindVertexArray(0);
+
 
         shader.Use();
 
@@ -248,7 +276,7 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
         // Draw the loaded model
-        glm::mat4 model(1);
+        model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
         
@@ -261,31 +289,36 @@ int main( )
         chair.Draw(shader);
         
         model = glm:: mat4(1);
-        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 9.131f));
+        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 9.131f) + glm::vec3(movKitXChair, movKitYChair, 0));
+        model = glm::rotate(model, glm::radians(rotKitChair), glm::vec3(1.0f, 0.0f, 0.0));
         model = glm::scale(model, glm::vec3(0.684f, 0.684f, 0.684f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chair.Draw(shader);
         
         model = glm:: mat4(1);
-        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 5.981f));
+        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 5.981f) + glm::vec3(movKitXChair, movKitYChair, 0));
+        model = glm::rotate(model, glm::radians(rotKitChair), glm::vec3(1.0f, 0.0f, 0.0));
         model = glm::scale(model, glm::vec3(0.684f, 0.684f, 0.684f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chair.Draw(shader);
         
         model = glm:: mat4(1);
-        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 3.703f));
+        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 3.703f) + glm::vec3(movKitXChair, movKitYChair, 0));
+        model = glm::rotate(model, glm::radians(rotKitChair), glm::vec3(1.0f, 0.0f, 0.0));
         model = glm::scale(model, glm::vec3(0.684f, 0.684f, 0.684f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chair.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 0.745f));
+        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 0.745f) + glm::vec3(movKitXChair, movKitYChair, 0));
+        model = glm::rotate(model, glm::radians(rotKitChair), glm::vec3(1.0f, 0.0f, 0.0));
         model = glm::scale(model, glm::vec3(0.684f, 0.684f, 0.684f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chair.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(1.444f, 0.172f, -1.381f));
+        model = glm::translate(model, glm::vec3(1.444f, 0.172f, -1.381f) + glm::vec3(movKitXChair, movKitYChair, 0));
+        model = glm::rotate(model, glm::radians(rotKitChair), glm::vec3(1.0f, 0.0f, 0.0));
         model = glm::scale(model, glm::vec3(0.684f, 0.684f, 0.684f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chair.Draw(shader);
@@ -433,24 +466,10 @@ int main( )
 
 
         // Draw the lamps
-        //model = glm::mat4(1);
-        //model = glm::translate(model, glm::vec3(3.822f, 4.373f, 10.006f));
-        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-
-        //glEnable(GL_BLEND); //Activa la funcionalidad para trabajar el canal alfa
-        //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        //model = glm::mat4(1);
-        //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        //glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
-        //glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0, 1.0, 0.0, 0.75);
-        //lamp.Draw(lightingShader);
-        //glDisable(GL_BLEND); //Desactiva el canal alfa 
-        //glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0, 1.0, 1.0, 1.0);
-        
-        model = glm::mat4(1);
+        /*model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(3.822f, 6.703f, 10.006f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        lamp.Draw(shader);
+        lamp.Draw(shader);*/
 
         model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(3.822f, 6.703f, 4.545f));
@@ -487,14 +506,20 @@ int main( )
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         left.Draw(shader);
+        
+        glBindVertexArray(0);
 
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
-        lampshader.Use();
 
-        // Draw the light object (using light's vertex attributes)
-        glBindVertexArray(lightVAO);
+        // Also draw the lamp object, again binding the appropriate shader
+        lampShader.Use();
+        // Get location objects for the matrices on the lamp shader (these could be different on a different shader)
+        modelLoc = glGetUniformLocation(lampShader.Program, "model");
+        viewLoc = glGetUniformLocation(lampShader.Program, "view");
+        projLoc = glGetUniformLocation(lampShader.Program, "projection");
+
         for (GLuint i = 0; i < 4; i++)
         {
             model = glm::mat4(1);
@@ -512,7 +537,6 @@ int main( )
     }
     
     glDeleteVertexArrays(1, &VAO);
-    glDeleteVertexArrays(1, &lightVAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
 
@@ -546,33 +570,101 @@ void DoMovement( )
     }
 
     //Pointlight lamp 1
-    if (keys[GLFW_KEY_R])
+    if (keys[GLFW_KEY_1])
     {
         pointLightPositions[0].x += 0.01f;
     }
-    if (keys[GLFW_KEY_F])
+    if (keys[GLFW_KEY_2])
     {
         pointLightPositions[0].x -= 0.01f;
     }
 
-    if (keys[GLFW_KEY_T])
+    if (keys[GLFW_KEY_3])
     {
         pointLightPositions[0].y += 0.01f;
     }
 
-    if (keys[GLFW_KEY_G])
+    if (keys[GLFW_KEY_4])
     {
         pointLightPositions[0].y -= 0.01f;
     }
-    if (keys[GLFW_KEY_Y])
+    if (keys[GLFW_KEY_5])
     {
         pointLightPositions[0].z -= 0.1f;
     }
-    if (keys[GLFW_KEY_H])
+    if (keys[GLFW_KEY_6])
     {
         pointLightPositions[0].z += 0.01f;
     }
+}
 
+void animacion()
+{
+    //Movimiento de las sillas
+    if (circuitoChair1)
+    {
+        if (recorrido1)
+        {
+            movKitXChair -= 0.1f;
+            if (movKitXChair < -1)
+            {
+                recorrido1 = false;
+                recorrido2 = true;
+            }
+        }
+        if (recorrido2)
+        {
+            movKitYChair += 0.1f;
+            if (movKitYChair > 3.5)
+            {
+                recorrido2 = false;
+                recorrido3 = true;
+            }
+        }
+        if (recorrido3)
+        {
+            rotKitChair = 180;
+            movKitXChair += 0.1f;
+            if (movKitXChair > 1)
+            {
+                recorrido3 = false;
+                recorrido4 = true;
+            }
+        }
+
+    }
+
+    if (circuitoChair2)
+    {
+        if (recorrido4)
+        {
+            movKitXChair -= 0.1f;
+            if (movKitXChair < -1)
+            {
+                recorrido4 = false;
+                recorrido5 = true;
+            }
+        }
+        if (recorrido5)
+        {
+            rotKitChair = 0;
+            movKitYChair -= 0.1f;
+            if (movKitYChair < 0)
+            {
+                recorrido5 = false;
+                recorrido6 = true;
+            }
+        }
+        if (recorrido6)
+        {
+            movKitXChair += 0.1f;
+            if (movKitXChair > 0)
+            {
+                recorrido6 = false;
+                recorrido1 = true;
+            }
+        }
+    }
 }
 
 // Is called whenever a key is pressed/released via GLFW
@@ -635,6 +727,20 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         {
             rotTrash -= 60.0f;
             transTrash -= 2.2f;
+        }
+    }
+
+    if (keys[GLFW_KEY_G])
+    {
+        if (circuitoChair1)
+        {
+            circuitoChair1 = false;
+            circuitoChair2 = true;
+        }
+        else
+        {
+            circuitoChair1 = true;
+            circuitoChair2 = false;
         }
     }
  
