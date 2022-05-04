@@ -42,6 +42,15 @@ GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 float rot = 0.0f;
 
+// Variables
+float transChair = 0.0f;
+float rotChair = 0.0f;
+bool activeChair;
+
+float transTrash = 0.0f;
+float rotTrash = 0.0f;
+bool activeTrash;
+
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 bool active;
@@ -157,6 +166,8 @@ int main( )
     Model sofa((char*)"Models/Sofa/sofa.obj");
     Model mostrador((char*)"Models/Mostrador/mostrador.obj");
     Model bote((char*)"Models/Bote/bote.obj");
+    Model trash((char*)"Models/Trash/trash.obj");
+    Model tapa((char*)"Models/Trash/tapa.obj");
     Model interior((char*)"Models/Interior/interior.obj");
     Model pilar((char*)"Models/Interior/pilar.obj");
     Model maquina((char*)"Models/Maquina/maquina.obj");
@@ -241,7 +252,8 @@ int main( )
         
         // Draw the chairs
         model = glm:: mat4(1);
-        model = glm::translate(model, glm::vec3(1.444f, 0.172f, 11.004f));
+        model = glm::translate(model, glm::vec3(1.444f + transChair, 0.172f, 11.004f));
+        model = glm::rotate(model, glm::radians(rotChair), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::scale(model, glm::vec3(0.684f, 0.684f, 0.684f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         chair.Draw(shader);
@@ -360,18 +372,30 @@ int main( )
 
         // Draw the bote
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(6.887f, 0.07f, -6.497f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.618f, 0.618f, 0.618f));
+        model = glm::translate(model, glm::vec3(6.497f, 0.0f, -5.397f));
+        model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        bote.Draw(shader);
+        trash.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(6.887f, 0.07f, -8.696f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.618f, 0.618f, 0.618f));
+        model = glm::translate(model, glm::vec3(6.497f + transTrash, 0.0f + transTrash, -5.397f));
+        model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(rotTrash), glm::vec3(1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        bote.Draw(shader);
+        tapa.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(6.497f, 0.0f, -7.692f));
+        model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        trash.Draw(shader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(6.497f + transTrash, 0.0f + transTrash, -7.692f));
+        model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(rotTrash), glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        tapa.Draw(shader);
 
 
         // Draw the counter
@@ -576,6 +600,35 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         }
     }
 
+    if (keys[GLFW_KEY_R])
+    {
+        activeChair = !activeChair;
+        if (activeChair)
+        {
+            transChair -= 1.0f;
+            rotChair += 50.0f;
+        }
+        else
+        {
+            transChair += 1.0f;
+            rotChair -= 50.0f;
+        }
+    }
+    
+    if (keys[GLFW_KEY_F])
+    {
+        activeTrash = !activeTrash;
+        if (activeTrash)
+        {
+            rotTrash += 60.0f;
+            transTrash += 2.2f;
+        }
+        else
+        {
+            rotTrash -= 60.0f;
+            transTrash -= 2.2f;
+        }
+    }
  
 }
 
