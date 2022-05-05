@@ -40,6 +40,27 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd MC.png
 Ni 1.00
+newmtl lambert14SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Madera.png
+Ni 1.00
+newmtl lambert15SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl lambert16SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Letrero.png
+Ni 1.00
 newmtl lamp3:lambert2SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -359,7 +380,21 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Rojo.jpg
 Ni 1.00
+newmtl pasted__lambert10SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
 newmtl pasted__lambert11SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Madera.png
+Ni 1.00
+newmtl pasted__lambert11SG3
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -387,6 +422,34 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Blanco.png
 Ni 1.00
+newmtl pasted__lambert12SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__lambert13SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd MC.png
+Ni 1.00
+newmtl pasted__lambert15SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__lambert15SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
 newmtl pasted__pasted__lambert4SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -402,6 +465,13 @@ Tf 1.00 1.00 1.00
 map_Kd Gris_oscuro.png
 Ni 1.00
 newmtl pasted__pasted__lambert4SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__lambert4SG6
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -429,6 +499,27 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Rojo.jpg
 Ni 1.00
+newmtl pasted__pasted__lambert10SG7
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert10SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert11SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Madera.png
+Ni 1.00
 newmtl pasted__pasted__lambert12SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -437,6 +528,34 @@ Tf 1.00 1.00 1.00
 map_Kd Blanco.png
 Ni 1.00
 newmtl pasted__pasted__lambert12SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__lambert12SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__lambert12SG9
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__lambert12SG10
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__lambert15SG1
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -457,6 +576,27 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Gris_oscuro.png
 Ni 1.00
+newmtl pasted__pasted__pasted__lambert4SG10
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert4SG11
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert4SG12
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
 newmtl pasted__pasted__pasted__lambert10SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -471,7 +611,49 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Rojo.jpg
 Ni 1.00
+newmtl pasted__pasted__pasted__lambert10SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert10SG9
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert10SG10
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
 newmtl pasted__pasted__pasted__lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert12SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert12SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert15SG1
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -485,7 +667,42 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Gris_oscuro.png
 Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert4SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert4SG7
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert10SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert10SG7
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Rojo.jpg
+Ni 1.00
 newmtl pasted__pasted__pasted__pasted__lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert12SG3
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -499,7 +716,48 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Gris_oscuro.png
 Ni 1.00
+newmtl pasted__pasted__pasted__pasted__pasted__lambert4SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__pasted__lambert12SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__pasted__pasted__lambert4SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Gris_oscuro.png
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__pasted__phong1SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
 newmtl pasted__pasted__pasted__pasted__phong1SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
+newmtl pasted__pasted__pasted__pasted__phong1SG4
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -519,6 +777,16 @@ Ni 1.00
 Ks 0.00 0.00 0.00
 map_Ks SpecularMapCristal.png
 Ns 18.00
+newmtl pasted__pasted__pasted__phong1SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
 newmtl pasted__pasted__phong1SG1
 illum 4
 Kd 0.00 0.00 0.00
@@ -529,7 +797,27 @@ Ni 1.00
 Ks 0.00 0.00 0.00
 map_Ks SpecularMapCristal.png
 Ns 18.00
+newmtl pasted__pasted__phong1SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
 newmtl pasted__phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Cristal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks SpecularMapCristal.png
+Ns 18.00
+newmtl pasted__phong1SG3
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00

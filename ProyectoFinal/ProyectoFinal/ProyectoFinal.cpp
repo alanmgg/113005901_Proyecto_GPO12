@@ -187,6 +187,7 @@ int main( )
     Model maquina((char*)"Models/Maquina/maquina.obj");
     Model lamp((char*)"Models/Lamp/lamp.obj");
     Model left((char*)"Models/Restaurante/left.obj");
+    Model techo((char*)"Models/Restaurante/techo.obj");
     
 
     GLuint texture;
@@ -482,12 +483,12 @@ int main( )
         lamp.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-3.64f, 6.703f, 8.895f));
+        model = glm::translate(model, glm::vec3(-4.3f, 6.703f, 8.895f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         lamp.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-3.64f, 6.703f, 0.503f));
+        model = glm::translate(model, glm::vec3(-4.3f, 6.703f, 0.503f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         lamp.Draw(shader);
 
@@ -506,6 +507,10 @@ int main( )
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         left.Draw(shader);
+
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        techo.Draw(shader);
         
         glBindVertexArray(0);
 
