@@ -1,6 +1,6 @@
 [![Repository Status](https://img.shields.io/badge/Repository%20Status-Maintained-dark%20green.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica)
 [![Author](https://img.shields.io/badge/Author-Alan%20Francisco%20Mora-blue.svg)](https://github.com/alanmgg)
-[![Latest Release](https://img.shields.io/badge/Latest%20Release-04%20May%202022-yellow.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica/commits/main)
+[![Latest Release](https://img.shields.io/badge/Latest%20Release-06%20May%202022-yellow.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica/commits/main)
 [![License](https://img.shields.io/badge/License-GNU%20v3.0-blue.svg)](https://github.com/alanmgg)
 [![Version](https://img.shields.io/badge/Version-1.0-red.svg)](https://github.com/alanmgg)
 
@@ -25,7 +25,7 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 #### Elementos a implementar:
 - [ ] Manual técnico y de usuario.
 - [x] Proyecto en repositorio con cambios hechos durante el semestre.
-- [ ] Realismo del espacio virtual contra la foto de referencia.
+- [x] Realismo del espacio virtual contra la foto de referencia.
 - [ ] Archivo Ejecutable.
 - [x] Modelado (mínimo 7 elementos).
 - [x] Animaciones sencillas (mínimo 3).
@@ -34,4 +34,5 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 
 #### Modelos a diseñar:
 ![McDonald´s](./Images/McDonalds.jpg)
+!Modelo](./Images/Modelo.jpg)
 ![Interior](./Images/Interior.jpg)
