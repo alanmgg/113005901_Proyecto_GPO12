@@ -68,11 +68,11 @@ bool active;
 
 // Positions of the point lights
 glm::vec3 pointLightPositions[] = {
-    glm::vec3(3.822f, 4.403f, 10.006f),
-    glm::vec3(3.822f, 4.403f, 4.545f),
-    glm::vec3(3.822f, 4.403f, -0.15f),
-    glm::vec3(-4.3f, 4.403f, 8.895f),
-    glm::vec3(-4.3f, 4.403f, 0.503f)
+    glm::vec3(3.822f, 4.503f, 10.006f),
+    glm::vec3(3.822f, 4.503f, 4.545f),
+    glm::vec3(3.822f, 4.503f, -0.15f),
+    glm::vec3(-4.3f, 4.503f, 8.895f),
+    glm::vec3(-4.3f, 4.503f, 0.503f)
 };
 
 glm::vec3 Light1 = glm::vec3(0);
@@ -199,6 +199,7 @@ int main( )
 
     //Exterior
     Model left((char*)"Models/Restaurante/left.obj");
+    Model right((char*)"Models/Restaurante/right.obj");
     Model techo((char*)"Models/Restaurante/techo.obj");
     
 
@@ -242,7 +243,7 @@ int main( )
 
         // Directional light
         glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-        glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.6f, 0.6f, 0.6f);
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.8f, 0.8f, 0.8f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.1f, 0.1f, 0.1f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 1.0f, 1.0f, 1.0f);
 
@@ -292,7 +293,7 @@ int main( )
         glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[4].quadratic"), 0.44f);
 
         // Set material properties
-        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 10.0f);
+        glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 20.0f);
 
         // Get the uniform locations
         GLint modelLoc = glGetUniformLocation(lightingShader.Program, "model");
@@ -566,6 +567,10 @@ int main( )
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         left.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        right.Draw(lightingShader);
 
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -799,11 +804,11 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         active = !active;
         if (active)
         {
-            Light1 = glm::vec3(1.0f, 1.0f, 1.0f);
-            Light2 = glm::vec3(1.0f, 1.0f, 1.0f);
-            Light3 = glm::vec3(1.0f, 1.0f, 1.0f);
-            Light4 = glm::vec3(1.0f, 1.0f, 1.0f);
-            Light5 = glm::vec3(1.0f, 1.0f, 1.0f);
+            Light1 = glm::vec3(0.0f, 0.0f, 1.0f);
+            Light2 = glm::vec3(0.0f, 0.0f, 1.0f);
+            Light3 = glm::vec3(0.0f, 0.0f, 1.0f);
+            Light4 = glm::vec3(0.0f, 0.0f, 1.0f);
+            Light5 = glm::vec3(0.0f, 0.0f, 1.0f);
         }
         else
         {
