@@ -68,11 +68,11 @@ bool active;
 
 // Positions of the point lights
 glm::vec3 pointLightPositions[] = {
-    glm::vec3(3.822f, 4.803f, 10.006f),
-    glm::vec3(3.822f, 4.803f, 4.545f),
-    glm::vec3(3.822f, 4.803f, -0.15f),
-    glm::vec3(-4.3f, 4.803f, 8.895f),
-    glm::vec3(-4.3f, 4.803f, 0.503f)
+    glm::vec3(3.822f, 4.403f, 10.006f),
+    glm::vec3(3.822f, 4.403f, 4.545f),
+    glm::vec3(3.822f, 4.403f, -0.15f),
+    glm::vec3(-4.3f, 4.403f, 8.895f),
+    glm::vec3(-4.3f, 4.403f, 0.503f)
 };
 
 glm::vec3 Light1 = glm::vec3(0);
@@ -183,17 +183,21 @@ int main( )
     glEnableVertexAttribArray(2);
 
     // Load textures
+    // Modelos
     Model chair((char*)"Models/Silla/silla.obj");
     Model table((char*)"Models/Table/table.obj");
     Model sofa((char*)"Models/Sofa/sofa.obj");
     Model mostrador((char*)"Models/Mostrador/mostrador.obj");
-    Model bote((char*)"Models/Bote/bote.obj");
     Model trash((char*)"Models/Trash/trash.obj");
     Model tapa((char*)"Models/Trash/tapa.obj");
-    Model interior((char*)"Models/Interior/interior.obj");
-    Model pilar((char*)"Models/Interior/pilar.obj");
     Model maquina((char*)"Models/Maquina/maquina.obj");
     Model lamp((char*)"Models/Lamp/lamp.obj");
+
+    // Interior
+    Model interior((char*)"Models/Interior/interior.obj");
+    Model pilar((char*)"Models/Interior/pilar.obj");
+
+    //Exterior
     Model left((char*)"Models/Restaurante/left.obj");
     Model techo((char*)"Models/Restaurante/techo.obj");
     
@@ -678,7 +682,7 @@ void animacionChairs()
     {
         if (recorrido1)
         {
-            movKitXChair -= 0.1f;
+            movKitXChair -= 0.05f;
             if (movKitXChair < -1)
             {
                 recorrido1 = false;
@@ -687,7 +691,7 @@ void animacionChairs()
         }
         if (recorrido2)
         {
-            movKitYChair += 0.1f;
+            movKitYChair += 0.05f;
             if (movKitYChair > 3.5)
             {
                 recorrido2 = false;
@@ -697,7 +701,7 @@ void animacionChairs()
         if (recorrido3)
         {
             rotKitChair = 180;
-            movKitXChair += 0.1f;
+            movKitXChair += 0.05f;
             if (movKitXChair > 1)
             {
                 recorrido3 = false;
@@ -711,7 +715,7 @@ void animacionChairs()
     {
         if (recorrido4)
         {
-            movKitXChair -= 0.1f;
+            movKitXChair -= 0.05f;
             if (movKitXChair < -1)
             {
                 recorrido4 = false;
@@ -721,7 +725,7 @@ void animacionChairs()
         if (recorrido5)
         {
             rotKitChair = 0;
-            movKitYChair -= 0.1f;
+            movKitYChair -= 0.05f;
             if (movKitYChair < 0)
             {
                 recorrido5 = false;
@@ -730,7 +734,7 @@ void animacionChairs()
         }
         if (recorrido6)
         {
-            movKitXChair += 0.1f;
+            movKitXChair += 0.05f;
             if (movKitXChair > 0)
             {
                 recorrido6 = false;
@@ -811,7 +815,7 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         }
     }
 
-    if (keys[GLFW_KEY_Y])
+    if (keys[GLFW_KEY_Z])
     {
         if (circuitoChair1)
         {
