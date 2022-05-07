@@ -31,6 +31,7 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
 void MouseCallback( GLFWwindow *window, double xPos, double yPos );
 void DoMovement( );
 void animacionChairs();
+void animacionBurger();
 
 // Camera
 Camera camera( glm::vec3( -2.5f, 5.0f, 35.0f ) );
@@ -61,6 +62,19 @@ bool recorrido3 = false;
 bool recorrido4 = false;
 bool recorrido5 = false;
 bool recorrido6 = false;
+
+//Animación de la hamburguesa
+float vinY = 0.0;
+float vinZ = 0.0;
+float rotKitBur = 0.0;
+
+bool circuitoBur1;
+bool circuitoBur2;
+
+bool recorrido7 = true;
+bool recorrido8 = false;
+bool recorrido9 = false;
+bool recorrido10 = false;
 
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
@@ -233,6 +247,7 @@ int main( )
         glfwPollEvents();
         DoMovement();
         animacionChairs();
+        animacionBurger();
 
         // Clear the colorbuffer
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
@@ -503,7 +518,8 @@ int main( )
 
         // Draw the burger
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(3.745f, 2.358f, 9.590f));
+        model = glm::translate(model, glm::vec3(3.745f, 2.358f, 9.590f) + +glm::vec3(0, vinY, vinZ));
+        model = glm::rotate(model, glm::radians(rotKitBur), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::scale(model, glm::vec3(0.294f, 0.294f, 0.294f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         burger.Draw(lightingShader);
@@ -594,19 +610,6 @@ int main( )
         techo.Draw(lightingShader);
 
         glBindVertexArray(0);
-
-
-        //shader.Use();
-
-        //glm::mat4 view = camera.GetViewMatrix();
-        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-
-        //// Draw the loaded model
-        //model = glm::mat4(1);
-        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //
-        //glBindVertexArray(0);
 
         
         glActiveTexture(GL_TEXTURE0);
@@ -766,6 +769,48 @@ void animacionChairs()
     }
 }
 
+void animacionBurger()
+{
+    if (circuitoBur1)
+    {
+        if (recorrido7)
+        {
+            rotKitBur = 0;
+            vinY += 0.5f;
+            vinZ -= 0.5f;
+            if (vinZ < -1.5 || vinY > 1.5)
+            {
+                recorrido7 = false;
+                recorrido8 = true;
+            }
+        }
+        if (recorrido8)
+        {
+            vinY -= 0.5f;
+            vinZ -= 0.5f;
+            if (vinZ < -3.5 || vinY < 0.0)
+            {
+                recorrido8 = false;
+                recorrido9 = true;
+            }
+        }
+    }
+
+    if (circuitoBur2)
+    {
+        if (recorrido9)
+        {
+            rotKitBur = 180;
+            vinZ += 0.5f;
+            if (vinZ > -0.5)
+            {
+                recorrido9 = false;
+                recorrido7 = true;
+            }
+        }
+    }
+}
+
 // Is called whenever a key is pressed/released via GLFW
 void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mode )
 {
@@ -848,6 +893,20 @@ void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mod
         {
             circuitoChair1 = true;
             circuitoChair2 = false;
+        }
+    }
+
+    if (keys[GLFW_KEY_X])
+    {
+        if (circuitoBur1)
+        {
+            circuitoBur1 = false;
+            circuitoBur2 = true;
+        }
+        else
+        {
+            circuitoBur1 = true;
+            circuitoBur2 = false;
         }
     }
  
