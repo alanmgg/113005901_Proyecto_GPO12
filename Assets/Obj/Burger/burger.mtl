@@ -1,9 +1,3 @@
-newmtl lambert3SG
-illum 4
-Kd 0.16 0.08 0.03
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
 newmtl lambert4SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -11,21 +5,38 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd Rojo.jpg
 Ni 1.00
-newmtl lambert6SG
+newmtl lambert9SG
 illum 4
-Kd 0.84 0.41 0.14
+Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd Carne.png
 Ni 1.00
-newmtl lambert7SG
+newmtl lambert10SG
 illum 4
-Kd 0.01 0.49 0.22
+Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd Amarillo.png
 Ni 1.00
-newmtl lambert8SG
+newmtl lambert11SG
 illum 4
-Kd 1.00 1.00 1.00
+Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd Lechuga.png
+Ni 1.00
+newmtl lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Pan.png
+Ni 1.00
+newmtl lambert13SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Blanco.png
 Ni 1.00

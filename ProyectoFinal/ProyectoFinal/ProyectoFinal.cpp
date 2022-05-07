@@ -529,6 +529,12 @@ int main( )
         model = glm::scale(model, glm::vec3(0.294f, 0.294f, 0.294f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         charola.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.745f, 2.358f, 5.283f));
+        model = glm::scale(model, glm::vec3(0.294f, 0.294f, 0.294f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        charola.Draw(lightingShader);
 
 
 
@@ -669,34 +675,6 @@ void DoMovement( )
     if ( keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT] )
     {
         camera.ProcessKeyboard( RIGHT, deltaTime );
-    }
-
-    //Pointlight lamp 1
-    if (keys[GLFW_KEY_1])
-    {
-        pointLightPositions[1].x += 0.01f;
-    }
-    if (keys[GLFW_KEY_2])
-    {
-        pointLightPositions[1].x -= 0.01f;
-    }
-
-    if (keys[GLFW_KEY_3])
-    {
-        pointLightPositions[1].y += 0.01f;
-    }
-
-    if (keys[GLFW_KEY_4])
-    {
-        pointLightPositions[1].y -= 0.01f;
-    }
-    if (keys[GLFW_KEY_5])
-    {
-        pointLightPositions[1].z -= 0.1f;
-    }
-    if (keys[GLFW_KEY_6])
-    {
-        pointLightPositions[1].z += 0.01f;
     }
 }
 
