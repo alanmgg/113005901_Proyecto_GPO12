@@ -192,6 +192,8 @@ int main( )
     Model tapa((char*)"Models/Trash/tapa.obj");
     Model maquina((char*)"Models/Maquina/maquina.obj");
     Model lamp((char*)"Models/Lamp/lamp.obj");
+    Model burger((char*)"Models/Burger/burger.obj");
+    Model charola((char*)"Models/Burger/charola.obj");
 
     // Interior
     Model interior((char*)"Models/Interior/interior.obj");
@@ -496,6 +498,21 @@ int main( )
         model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         maquina.Draw(lightingShader);
+
+
+
+        // Draw the burger
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.745f, 2.358f, 9.590f));
+        model = glm::scale(model, glm::vec3(0.294f, 0.294f, 0.294f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        burger.Draw(lightingShader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.745f, 2.358f, 9.683f));
+        model = glm::scale(model, glm::vec3(0.294f, 0.294f, 0.294f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        charola.Draw(lightingShader);
 
 
 
