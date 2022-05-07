@@ -26,7 +26,7 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 - [ ] Manual técnico y de usuario.
 - [x] Proyecto en repositorio con cambios hechos durante el semestre.
 - [x] Realismo del espacio virtual contra la foto de referencia.
-- [ ] Archivo Ejecutable.
+- [x] Archivo Ejecutable.
 - [x] Modelado (mínimo 7 elementos).
 - [x] Animaciones sencillas (mínimo 3).
 - [x] Animaciones complejas (mínimo 2).
