@@ -34,7 +34,7 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 
 #### Modelos a diseñar:
 ![McDonald´s](./Images/McDonalds.jpg)
-![Modelo](./Images/Modelo.JPG)
+![Modelo](./Images/Fachada.JPG)
 ![Interior](./Images/Interior.jpg)
 ![Modelos](./Images/Modelos1.JPG)
 ![Modelos](./Images/Modelos2.JPG)
