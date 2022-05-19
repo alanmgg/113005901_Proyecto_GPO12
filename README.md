@@ -1,8 +1,8 @@
 [![Repository Status](https://img.shields.io/badge/Repository%20Status-Maintained-dark%20green.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica)
 [![Author](https://img.shields.io/badge/Author-Alan%20Francisco%20Mora-blue.svg)](https://github.com/alanmgg)
-[![Latest Release](https://img.shields.io/badge/Latest%20Release-10%20May%202022-yellow.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica/commits/main)
+[![Latest Release](https://img.shields.io/badge/Latest%20Release-19%20May%202022-yellow.svg)](https://github.com/alanmgg/Proyecto-Computacion-Grafica/commits/main)
 [![License](https://img.shields.io/badge/License-GNU%20v3.0-blue.svg)](https://github.com/alanmgg)
-[![Version](https://img.shields.io/badge/Version-1.0-red.svg)](https://github.com/alanmgg)
+[![Version](https://img.shields.io/badge/Version-2.0-red.svg)](https://github.com/alanmgg)
 
 # PROYECTO FINAL 2022-2
 Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
@@ -44,3 +44,8 @@ Proyecto final para la clase de Computación Gráfica. FI, UNAM. Semestre 2022-2
 ![Modelos](./Images/Modelos6.JPG)
 ![Modelos](./Images/Modelos7.JPG)
 ![Modelos](./Images/Modelos8.JPG)
+![Interior](./Images/Interior2.jpg)
+![Modelos](./Images/Modelos9.JPG)
+![Modelos](./Images/Modelos10.JPG)
+![Modelos](./Images/Modelos11.JPG)
+![Modelos](./Images/Modelos12.JPG)
