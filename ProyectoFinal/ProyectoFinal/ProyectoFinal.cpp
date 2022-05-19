@@ -212,6 +212,7 @@ int main( )
     // Interior
     Model interior((char*)"Models/Interior/interior.obj");
     Model pilar((char*)"Models/Interior/pilar.obj");
+    Model bathroom((char*)"Models/Interior/bathroom.obj");
 
     // Exterior
     Model left((char*)"Models/Restaurante/left.obj");
@@ -572,7 +573,7 @@ int main( )
         toilet.Draw(lightingShader);
         
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-4.889f, 0.283f, -20.064f));
+        model = glm::translate(model, glm::vec3(-3.929f, 0.283f, -19.337f));
         model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::scale(model, glm::vec3(1.203f, 1.203f, 1.203f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -641,6 +642,10 @@ int main( )
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         pilar.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        bathroom.Draw(lightingShader);
 
 
 
