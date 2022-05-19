@@ -222,6 +222,7 @@ int main( )
     // Bathroom
     Model toilet((char*)"Models/Toilet/toilet.obj");
     Model lavabos((char*)"Models/Lavabos/lavabos.obj");
+    Model secador((char*)"Models/Secador/secador.obj");
     
 
     GLuint texture;
@@ -566,7 +567,7 @@ int main( )
         toilet.Draw(lightingShader);
         
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(5.153f, 0.278f, -29.180f));
+        model = glm::translate(model, glm::vec3(6.8f, 0.278f, -29.180f));
         model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::scale(model, glm::vec3(0.909f, 0.909f, 0.909f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
@@ -578,6 +579,11 @@ int main( )
         model = glm::scale(model, glm::vec3(1.203f, 1.203f, 1.203f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         lavabos.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-12.655f, 3.803f, -22.843f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        secador.Draw(lightingShader);
 
 
 
