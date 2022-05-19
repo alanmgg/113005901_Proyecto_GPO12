@@ -224,6 +224,7 @@ int main( )
     Model lavabos((char*)"Models/Lavabos/lavabos.obj");
     Model secador((char*)"Models/Secador/secador.obj");
     Model espejos((char*)"Models/Espejos/espejos.obj");
+    Model jabonera((char*)"Models/Jabonera/jabonera.obj");
     
 
     GLuint texture;
@@ -589,6 +590,20 @@ int main( )
         model = glm::mat4(1);
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         espejos.Draw(lightingShader);
+
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(3.474f, 4.084f, -18.265f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.470f, 0.470f, 0.470f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        jabonera.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-12.225f, 4.084f, -18.265f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.470f, 0.470f, 0.470f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        jabonera.Draw(lightingShader);
 
 
 
