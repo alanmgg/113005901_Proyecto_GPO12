@@ -213,10 +213,14 @@ int main( )
     Model interior((char*)"Models/Interior/interior.obj");
     Model pilar((char*)"Models/Interior/pilar.obj");
 
-    //Exterior
+    // Exterior
     Model left((char*)"Models/Restaurante/left.obj");
     Model right((char*)"Models/Restaurante/right.obj");
     Model techo((char*)"Models/Restaurante/techo.obj");
+
+    // Bathroom
+    Model toilet((char*)"Models/Toilet/toilet.obj");
+    Model lavabos((char*)"Models/Lavabos/lavabos.obj");
     
 
     GLuint texture;
@@ -535,6 +539,44 @@ int main( )
         model = glm::scale(model, glm::vec3(0.294f, 0.294f, 0.294f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         charola.Draw(lightingShader);
+
+
+
+        // Draw the bathroom
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-10.410f, 0.278f, -29.180f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.909f, 0.909f, 0.909f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        toilet.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-4.572f, 0.278f, -29.180f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.909f, 0.909f, 0.909f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        toilet.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(0.52f, 0.278f, -29.180f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.909f, 0.909f, 0.909f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        toilet.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(5.153f, 0.278f, -29.180f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.909f, 0.909f, 0.909f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        toilet.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        model = glm::translate(model, glm::vec3(-4.889f, 0.283f, -20.064f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(1.203f, 1.203f, 1.203f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        lavabos.Draw(lightingShader);
 
 
 
