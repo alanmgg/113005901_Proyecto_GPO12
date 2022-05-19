@@ -223,6 +223,7 @@ int main( )
     Model toilet((char*)"Models/Toilet/toilet.obj");
     Model lavabos((char*)"Models/Lavabos/lavabos.obj");
     Model secador((char*)"Models/Secador/secador.obj");
+    Model espejos((char*)"Models/Espejos/espejos.obj");
     
 
     GLuint texture;
@@ -584,6 +585,10 @@ int main( )
         model = glm::translate(model, glm::vec3(-12.655f, 3.803f, -22.843f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         secador.Draw(lightingShader);
+        
+        model = glm::mat4(1);
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        espejos.Draw(lightingShader);
 
 
 

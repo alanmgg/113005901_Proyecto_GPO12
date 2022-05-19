@@ -1,15 +1,15 @@
 ﻿  ProyectoFinal.cpp
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(248,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(231,38): warning C4101: 'nrChannels': variable local sin referencia
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(231,9): warning C4101: 'textureWidth': variable local sin referencia
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(233,20): warning C4101: 'image': variable local sin referencia
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(231,23): warning C4101: 'textureHeight': variable local sin referencia
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(950,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(951,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(955,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(956,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(958,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(959,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(249,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(232,38): warning C4101: 'nrChannels': variable local sin referencia
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(232,9): warning C4101: 'textureWidth': variable local sin referencia
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(234,20): warning C4101: 'image': variable local sin referencia
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(232,23): warning C4101: 'textureHeight': variable local sin referencia
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(955,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(956,17): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(960,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(961,21): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(963,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\ProyectoFinal\ProyectoFinal.cpp(964,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
 soil2-debug.lib(SOIL2.obj) : warning LNK4075: se omite '/EDITANDCONTINUE' debido a la especificación '/OPT:ICF'
 LINK : warning LNK4098: la biblioteca predeterminada'MSVCRTD' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
   Generando código
@@ -17,8 +17,8 @@ LINK : warning LNK4098: la biblioteca predeterminada'MSVCRTD' entra en conflicto
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
-soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(etc1_utils.obj)' o en 'C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\Release\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(etc1_utils.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\Release\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_helper.obj)' o en 'C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\Release\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(image_helper.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(SOIL2.obj)' o en 'C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\Release\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   ProyectoFinal.vcxproj -> C:\Users\Alan MG\Documents\Github\113005901_Proyecto_GPO12\ProyectoFinal\Release\ProyectoFinal.exe
